@@ -1,0 +1,349 @@
+:root {
+    --seal-body-color: #AAAAAA;
+    --seal-shade-color: gray;
+    --seal-light-color: #BCBABA;
+    --darkest-gray: #686666;
+    --eye-color: black;
+    --water-color: #4169E1;
+    --sky-color: #000000;
+  }
+  
+  body {
+    padding: 0;
+    margin: 0;
+  }
+
+  .box-canvas{
+    position: relative;
+    margin: auto;
+    display: block;
+    padding-bottom: 8%;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(to bottom,
+      var(--sky-color),
+      var(--sky-color) 200px, 
+      var(--water-color) 200px,
+      var(--water-color)
+    );
+  }
+  
+  .box-canvas::after {
+    content: '';
+    position: absolute;
+    top: 250px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--water-color);
+    width: 300px;
+    height: 250px;
+  }
+  
+  .seal {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--seal-body-color);
+    height: 170px;
+    width: 130px;
+    border-radius: 40% 40% 0 0 / 50% 50% 0 0;
+    animation: headBob 5s infinite;
+  }
+  
+  @keyframes headBob {
+    0% {
+      transform: translateX(-50%) translateY(200px);
+    }
+    
+    20% {
+      transform: translateX(-50%);
+    }
+    
+    80% {
+      transform: translateX(-50%);
+    }
+    
+    100% {
+      transform: translateX(-50%) translateY(200px);
+    }
+  }
+  
+  .mask {
+    position: absolute;
+    top: 55px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 60px;
+    background: var(--seal-light-color);
+    border-radius: 50%;
+  }
+  
+  .whisker {
+    position: absolute;
+    width: 80px;
+    height: 30px;
+    border-top: 3px solid var(--seal-shade-color);
+    
+  }
+  
+  .whisker.left {
+    left: -60px;
+    border-radius: 40% 20%;
+    transform: rotate(20deg);
+  }
+  
+  .whisker.right {
+    right: -60px;
+    border-radius: 20% 40%;
+    transform: rotate(-20deg);
+  }
+  
+  .whisker::after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 30px;
+    border-top: 3px solid var(--seal-shade-color);
+  }
+  
+  .whisker.left::after {
+    border-radius: 40% 20%;
+    transform: rotate(-20deg);
+    transform-origin: bottom right;
+  }
+  
+  .whisker.right::after {
+    border-radius: 20% 40%;
+    transform: rotate(20deg);
+    transform-origin: bottom left;
+  }
+  
+  .eye {
+    position: absolute;
+    top: 35px;
+    width: 20px;
+    height: 20px;
+    background: var(--eye-color);
+    border-radius: 50%;
+  }
+  
+  /* eyebrow-style shade */
+  .eye::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    width: 30px;
+    height: 30px;
+    border-top: 5px solid var(--seal-shade-color);
+    border-radius: 40%;
+    left: -5px;
+  }
+  
+  /* Dots inside eyes */
+  .eye::after {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: white;
+    right: 5px;
+    bottom: 5px;
+    animation: moveEyes 5s infinite;
+  }
+  
+  @keyframes moveEyes {
+    
+    0% {
+      right: 5px;
+    }
+    
+    40% {
+      right: 5px;
+    }
+    
+    50% {
+      right: 10px;
+    }
+    
+    60% {
+       right: 5px;
+    }
+   
+  }
+  
+  .eye.left {
+     left: 25px;
+  }
+  
+  .eye.right {
+    right: 25px;
+  }
+  
+  .brow {
+    position: absolute;
+    top: -20px;
+    width: 10px;
+    height: 50px;
+    border-radius: 30%;
+  }
+  
+  .brow::before {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 40px;
+    border-radius: 30%;
+  }
+  
+  .brow.left::before {
+    left: -5px;
+    border-right: 2px solid var(--seal-shade-color);
+    transform: rotate(-20deg);
+    transform-origin: bottom right;
+  }
+  
+  .brow.right::before {
+    right: -5px;
+    border-left: 2px solid var(--seal-shade-color);
+    transform: rotate(20deg);
+    transform-origin: bottom left;
+  }
+  
+  .brow.left {
+    left: 40px;
+    border-right: 2px solid var(--seal-shade-color);
+    transform: rotate(-20deg);
+  }
+  
+  .brow.right {
+    right: 40px;
+    border-left: 2px solid var(--seal-shade-color);
+    transform: rotate(20deg);
+  }
+  
+  .nose {
+    position: absolute;
+    top: 55px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 20% 20% 50% 50%;
+    overflow: hidden;
+  }
+  
+  .nose::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    width: 40px;
+    height: 40px;
+    background: var(--seal-shade-color);
+    background: linear-gradient(to right, 
+      var(--seal-shade-color), 
+      var(--seal-shade-color) 15px, 
+      var(--darkest-gray) 18px, 
+      var(--darkest-gray) 20px,
+      var(--seal-shade-color) 25px,
+      var(--seal-shade-color)
+    );
+    clip-path: polygon(50% 100%, 0 0, 100% 0);
+  }
+  
+  .nostrils {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+  }
+  
+  /* left side */
+  .nostrils::before {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 20px;
+    background: var(--darkest-gray);
+    border-radius: 50%;
+    transform: rotate(-20deg);
+    bottom: 3px;
+    left: 3px;
+  }
+  
+  /* right side */
+  .nostrils::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 20px;
+    background: var(--darkest-gray);
+    border-radius: 50%;
+    transform: rotate(20deg);
+    bottom: 3px;
+    right: 3px;
+  }
+  
+  .mouth {
+    position: absolute;
+    left: 50%;
+    top: 85px;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 50px;
+  }
+  
+  /* Left side */
+  .mouth::before {
+    content: '';
+    position: absolute;
+    left: 12px;
+    top: -10px;
+    width: 20px;
+    height: 25px;
+    border: 3px solid var(--seal-shade-color);
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-radius: 0 30% 50% 40%;
+    transform: rotate(30deg);
+  }
+  
+  /* Right side */
+  .mouth::after {
+    content: '';
+    position: absolute;
+    right: 12px;
+    top: -10px;
+    width: 20px;
+    height: 25px;
+    border: 3px solid var(--seal-shade-color);
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-radius: 30% 50% 40%;
+    transform: rotate(-30deg);
+  }
+
+  #outPopUp {
+    position: absolute;
+    text-align: center;
+    width: 300px;
+    height: 200px;
+    z-index: 15;
+    top: 63%;
+    left: 50%;
+    margin: -100px 0 0 -140px;
+    font-size: 20px, "Merriweather"
+  }
+
+img {
+  position: absolute;
+  border-radius: 50%;
+  width: 300px;
+  height: 200px;
+  top: 40%;
+  left: 51%;
+  margin: -100px 0 0 -160px;
+  z-index: 15;
+}
